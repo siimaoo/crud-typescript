@@ -1,4 +1,5 @@
 # CRUD com Typescript
+[![CircleCI](https://circleci.com/gh/siimaoo/crud-typescript.svg?style=shield)](https://circleci.com/gh/siimaoo/crud-typescript)
 
 ### O que tem no projeto:
 
