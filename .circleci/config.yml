@@ -28,7 +28,7 @@ jobs:
           command: ssh-keyscan 138.118.174.103 >> ~/.ssh/known_hosts
       - run:
           name: Deploy over SSH
-          command: scp root@138.118.174.103:/deploy
+          command: scp ./dist root@138.118.174.103:/deploy
 
 workflows:
   version: 2
