@@ -24,8 +24,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Config SSH
+          command: ssh-keyscan 138.118.174.103 >> ~/.ssh/known_hosts
+      - run:
           name: Deploy over SSH
-          command: ssh root@138.118.174.103 cd deploy/;
+          command: scp ./dist root@138.118.174.103:/deploy
 
 workflows:
   version: 2
