@@ -1,14 +1,14 @@
 {
   "compilerOptions": {
     "target": "es2017",                         
-    "module": "commonjs",               
-    "strict": true,   
+    "module": "commonjs",                 
     "allowJs": true,                  
     "esModuleInterop": true,            
     "skipLibCheck": true,                    
     "forceConsistentCasingInFileNames": true ,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "outDir": "./dist"
   },
   "include": [
     "src/**/*.ts"
