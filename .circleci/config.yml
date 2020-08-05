@@ -4,23 +4,23 @@ jobs:
     working_directory: ~/hello-sts
     docker:
       - image: circleci/node:12.16.0
-    steps:
-      - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest'
-      - restore_cache:
-          key: dependency-cache-{{checksum "package-lock.json"}}
-      - run:
-          name: install-npm
-          command: npm install
-      - run:
-          name: build project
-          command: npm run build
-      - save_cache:
-          key: dependency-cache-{{checksum "package-lock.json"}}
-          paths:
-            - ./node_modules
+    # steps:
+    #   - checkout
+    #   - run:
+    #       name: update-npm
+    #       command: 'sudo npm install -g npm@latest'
+    #   - restore_cache:
+    #       key: dependency-cache-{{checksum "package-lock.json"}}
+    #   - run:
+    #       name: install-npm
+    #       command: npm install
+    #   - run:
+    #       name: build project
+    #       command: npm run build
+    #   - save_cache:
+    #       key: dependency-cache-{{checksum "package-lock.json"}}
+    #       paths:
+    #         - ./node_modules
   deploy:
     machine:
       enabled: true
@@ -31,7 +31,10 @@ jobs:
           command: ssh-keyscan 138.118.174.103 >> ~/.ssh/known_hosts
       - run:
           name: Deploy over SSH
-          command: rsync -avce ssh --delete ./dist root@138.118.174.103:/root/crud-type
+          command: rsync -avce ssh --delete ./ root@138.118.174.103:/root/crud-type
+      - run: 
+          name: Build Project
+          command: ssh root@138.118.174.103 "cd crud-type/ && yarn build && mv dist/ ../crud-type-prod && cd .. && rm -rf crud-type/"
 
 workflows:
   version: 2
