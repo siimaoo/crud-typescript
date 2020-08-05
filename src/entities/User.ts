@@ -22,7 +22,7 @@ export class User {
   @Column()
   public phone: string;
 
-  @Column()
+  @Column({select: false})
   public password: string;
 
   @Column()
