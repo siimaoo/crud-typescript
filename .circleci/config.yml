@@ -34,7 +34,7 @@ jobs:
           command: rsync -avce ssh --delete ./ root@138.118.174.103:/root/crud-type
       - run: 
           name: Build Project
-          command: ssh root@138.118.174.103 "mkdir temp && mv crud-type-prod/.env temp/.env && rm -rf crud-type-prod && cd crud-type/ && yarn && yarn build && mv package.json dist/package.json && mv dist/ ../crud-type-prod && yarn && cd .. && mv temp/.env crud-type-prod/.env && rm -rf crud-type && rm -rf temp"
+          command: ssh root@138.118.174.103 "mkdir temp && mv crud-type-prod/.env temp/.env && rm -rf crud-type-prod && cd crud-type/ && yarn && yarn build && mv package.json dist/package.json && mv dist/ ../crud-type-prod && yarn && cd .. && mv temp/.env crud-type-prod/.env && rm -rf crud-type && rm -rf temp && cd crud-type-prod && yarn"
 
 workflows:
   version: 2
