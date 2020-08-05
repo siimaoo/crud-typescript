@@ -8,8 +8,6 @@
   - Criar usuario
   - Realizar login
 
-obs: Apenas os metodos e classes construidos, ainda não há conexão com banco de dados!
-
 ### O que está sendo usado:
   - Typescript
   - Express
