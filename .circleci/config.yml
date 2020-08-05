@@ -34,7 +34,7 @@ jobs:
           command: rsync -avce ssh --delete ./ root@138.118.174.103:/root/crud-type
       - run: 
           name: Build Project
-          command: ssh root@138.118.174.103 "cd crud-type/ && yarn build && mv dist/ ../crud-type-prod && cd .. && rm -rf crud-type"
+          command: ssh root@138.118.174.103 "cd crud-type/ && yarn && yarn build && mv dist/ ../crud-type-prod && cd .. && rm -rf crud-type"
 
 workflows:
   version: 2
