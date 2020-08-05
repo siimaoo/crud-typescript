@@ -25,7 +25,7 @@ jobs:
       - checkout
       - run:
           name: Deploy over SSH
-          command: ssh root@138.118.174.103 "cd deploy/;
+          command: ssh root@138.118.174.103 cd deploy/;
 
 workflows:
   version: 2
