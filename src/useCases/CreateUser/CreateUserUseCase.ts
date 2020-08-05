@@ -14,10 +14,10 @@ export class CreateUserUseCase {
       throw new Error('Usuario já existe.');
     }
 
-    data.password = await this.usersRepository.transformPasswordInHash(data.password);
-
     const user = new User(data);
 
     await this.usersRepository.save(user);
+
+    return await this.usersRepository.createToken(user.id);
   }
 }

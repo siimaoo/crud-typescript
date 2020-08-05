@@ -34,4 +34,3 @@ yarn start
 ### Proximas implementações:
 
 - Atualizar dados do usuario
-- Conectar com o banco de dados
