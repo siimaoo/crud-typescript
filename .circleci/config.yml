@@ -9,9 +9,15 @@ jobs:
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
+      - restore_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
       - run:
           name: install-npm
           command: npm install
+      - save_cache:
+          key: dependency-cache-{{checksum "package-lock.json"}}
+          paths:
+            - ./node_modules
       - run:
           name: build project
           command: npm run build
@@ -25,7 +31,7 @@ jobs:
           command: ssh-keyscan 138.118.174.103 >> ~/.ssh/known_hosts
       - run:
           name: Deploy over SSH
-          command: rsync -avce ssh --delete ./dist root@138.118.174.103:/root/crud-type
+          command: rsync -avce ssh --delete ./ root@138.118.174.103:/root/crud-type
 
 workflows:
   version: 2
